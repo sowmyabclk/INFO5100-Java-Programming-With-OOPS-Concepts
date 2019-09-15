@@ -5,7 +5,7 @@ Admin
 login
 search for the course
 remove the course
-drop the course
+logout
 	
 
 State:adminUserName,Adminpassoword
@@ -44,6 +44,7 @@ login
 serach for the couse
 register for the course ----> pay bill and get receipt
 drop the course
+logout
 
 State: studentName,studentRollNumber,couserNumber,courseName,professorName
 Behavior :
