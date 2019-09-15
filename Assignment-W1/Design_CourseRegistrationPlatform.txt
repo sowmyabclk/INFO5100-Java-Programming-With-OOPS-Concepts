@@ -1,0 +1,132 @@
+Design a Course Registration Platform
+                      
+Admin
+
+login
+search for the course
+remove the course
+drop the course
+	
+
+State:adminUserName,Adminpassoword
+Behaviors:
+
+Behavior: login(userName,password){
+	loginToWebsite.login(userName,password);
+	
+}
+
+Behavior:addcourse(courseName){
+	List<String> courses;
+	if(!(courses.contains((courseName))){
+		courses.add(courseName);
+		return courses;// add course name if it doesn't exist
+	}
+	else
+		break;
+	}
+
+Behavior:deleteCourse(courseName){
+  if((courses.contains(courseName)){
+	  courses.remove(courseName);//remove course name if exists
+	  return courses
+  }
+  else
+	  break;
+}
+
+
+-------------------------------------------------------------------------------------------
+
+class : Student
+
+login
+serach for the couse
+register for the course ----> pay bill and get receipt
+drop the course
+
+State: studentName,studentRollNumber,couserNumber,courseName,professorName
+Behavior :
+ registerForTheCourse(courseNumber,studentRollNumber){
+try{
+	if(student.studentRollNumberexists(studentRollNumber) && course.courseNumberexist(couserNumber)) {
+		if(student.getListofCourse().length()<3)
+			List<String> lst;
+			lst.add(courseName); //adding coursename to  the student list of courses.
+			paymentService.makePayment(studentRollNumber,courseNumber,price);
+			getreceipt;
+catch(Exception e){
+system.out.println("course list exceeded 3")
+}
+}
+
+
+Behavior: dropCourse(courseName,studentName){
+	List<String> lst=studentName.getListOfCourses();
+	if(lst.contains(courseName))
+		lst.remove(courseName);
+	else
+		break;
+}
+
+
+Behavior:studentRollNumberexists(studentRollNumber){
+ if(listofstudentRollNumber.contains(studentRollNumber))
+	return true;
+else 
+	return false;
+}
+
+class : Course
+State: courseDescription,professorName,professorMeetingTimes,enrollmentDetails
+Behavior: 
+getlistOfCourses(){
+
+	return listOfCourses;//each course is defined with all the attributes like description, professorName etc.
+
+}
+
+//check if courseNumber exists
+Behavior:courseNumberexists(courseNumber){
+	 if(listOfcourseNumber.contains(courseNumber))
+		return true;
+	else 
+		return false;
+	}
+
+Behavior:searchforCourse(courseName){
+	if(lst.getListOfCourse().contain(courseName))
+		return true;
+	else
+		return false;
+}
+-----------------------------------------------------------------------------------------------------------------------------
+class : loginToWebsite
+Data: userName,Password,url
+
+Behaviour: 
+isvalidlogin(username,password) {
+ArrayList<String> usernames;
+      if(usernames.contains(username));
+	  	return true;
+     else
+    	return false;
+}
+
+logout(){
+	
+	
+	//logout from the website
+}
+
+---------------------------------------------------------
+
+class:PaymentService
+
+Behavior:makePayment((studentRollNumber,courseNumber,price){
+//make payment and get receipt
+
+}	
+	
+    
+

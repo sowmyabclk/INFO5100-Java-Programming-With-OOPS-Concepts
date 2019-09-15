@@ -1,0 +1,121 @@
+Design a traffic controller System for a junction
+
+
+objects:
+
+vehicles
+traffic controller lights
+junction
+---------------------------------------------------------------
+
+class : Vehicles
+Data: vehicle
+Behavior: moveVehicles()
+----------------------------------------------
+class : trafficController
+Data : red,yellow,green,camera
+
+Behavior: isTurnRed(),isTurnYellow(),isTurnGreen(),flashCamera()
+
+Behavior:isTurnRed(){
+	if(turnRed ==on)
+		return true;
+	else 
+		false
+	}
+
+Behavior: isTurnYellow(){
+		if(turnYellow ==on)
+			return true;
+		else 
+			false
+	}
+
+Behavior:isTurnGreen(){
+			if(turnGreen ==on)
+				return true;
+			else 
+				false
+		}
+
+Behavior:flashCamera(){
+			cameraSevice.click();
+			return image;
+			}
+------------------------------------------------------------------
+Junction
+
+Data: north,east,west,south
+Behavior: getNorth(),getEast(),getWest(),getSouth()
+getNorth(){
+				/*return north direction*/
+				
+			}
+getEast(){
+				/*return East direction*/
+				
+			}
+
+getWest(){
+				/*return West direction*/
+				
+			}
+
+getSouth(){
+				/*return South direction*/
+				
+			}
+
+
+
+trafficControllerFlow(){
+				if(Junction.getWest().TrafficController.isTurnRed() && Junction.getEast().TrafficController.isTurnRed()){
+
+					//set South and North Traffic controller to green and let vehicles move
+					Junction.getSouth().TrafficController.green =on;
+					Junction.getSouth().TrafficController.Red =off;
+					Junction.getSouth().TrafficController.Yellow =off;
+
+					Junction.getNorth().TrafficController.green =on;
+					Junction.getNorth().TrafficController.Red =off;
+					Junction.getNorth().TrafficController.Yellow =off;
+					//check if the south and north traffic controller lights are green
+					if(Junction.getSouth().TrafficController.isTurnGreen() && Junction.getNorth().TrafficController.isTurnGreen() )
+					{
+
+						Junction.getSouth().Vehicles.moveVehicles();
+						Junction.getSouth().Vehicles.moveVehicles();
+					}
+					return changeN_S_TrafficController_to_Red; // set north and south traffic controller lights to Red
+				}
+
+
+				else if(Junction.getNorth().TrafficController.isTurnRed() && Junction.getSouth().TrafficController.isTurnRed()){
+
+					//set East and West Traffic controller lights to green and let vehicles move
+					Junction.getEast().TrafficController.green =on;
+					Junction.getEast().TrafficController.Red =off;
+					Junction.getEast().TrafficController.Yellow =off;
+
+					Junction.getWest().TrafficController.green =on;
+					Junction.getWest().TrafficController.Red =off;
+					Junction.getWest().TrafficController.Yellow =off;
+					//check if the east and west traffic controller lights are green
+					if(Junction.getEast().TrafficController.isTurnGreen() && Junction.getWest().TrafficController.isTurnGreen() )
+					{
+
+						Junction.getEast().Vehicles.moveVehicles();
+						Junction.getWest().Vehicles.moveVehicles();
+					}
+					return changeE_W_TrafficController_to_Red;//set East and West Traffic Controller to Red
+				}
+
+			}
+
+
+
+
+
+
+
+

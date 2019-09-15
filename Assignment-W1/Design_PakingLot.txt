@@ -1,0 +1,150 @@
+Design a Parking Lot
+
+Objects:
+
+user
+   1. can get token
+   2.check available slots in floors
+   2.park vehicle
+   3.unpark vehicle
+   4.pay for parking
+Car
+parkingSpace
+MachineService
+creditCard
+payment
+
+class:User
+
+Data: userName,useraddress,userPhoneNumber,creditCardDetails
+Behaviour: gettoken(),parkVehicle(),unparkVehicle(),payforParking(tokenId,parkInTime,parkoutTime,CardDetails.cardNumber)
+
+Sequence: 
+
+Behaviour: gettoken() {
+   tokenDetails = driver.gettoken();
+}
+Behaviour: parkVehicle(){
+	//available slots will be checked before parking in the method MachineService.displayAvailableSlots()
+	ParkingService.parkvehicle();
+	}
+Behaviour: unparkVehicle()
+	ParkingService.unparkVehicle();
+
+}
+
+Behaviour: payforParking(tokenDetails.tokenId,parkInTime,parkoutTime){
+	
+	receiptDetails=Payment.payforParking(tokenId,parkInTime,parkoutTime);
+}
+--------------------------------------------------------------------------------------------------
+class : parkingSpace
+Data: floorNumber,slotNumber
+-----------------------------------------------------------------------
+class : ParkingService
+Behavior: parkVehicle(),unparkvehicle()
+
+parkVehicle(){
+	MachineService.displayAvailableSlots();// number of floors and slots will appear
+	/*driver will park in the desired floor and the respective slot*/
+}
+
+unparkVehicle(){
+/* unpark the vehicle*/
+}
+--------------------------------------------------------------------------
+class: car
+Data: carRegistrationNumber,registeredCityName,color
+Behavior:isParked(),isunParked()
+----------------------------------------------------------------------------------
+
+class : MachineService
+Behaviour: getToken(),displayTheAvailableSlots()
+
+
+Behavior:getToken(){
+	
+	return tokenDetails;
+}
+
+//considering floors = A - Z
+//slots = 15 in each floor
+
+
+//display floor name and number of slots available, if slots ==0 dont display the floor name and slots
+displayAvailableSlots(){
+int numberOfSlots;
+for(int i=0;i<=totalNumberofFloors;i++) { //for each floor get the number of slots
+		numberOfSlots=calculateSlotsinFloors(eachFloor);
+		if(numberOfSlots == 0)
+			floor = floorName;
+		    slots = full; 
+        else
+			floor = floorName;
+		   slots = numberOfSlots; 
+	}
+return floor,slots;
+}
+
+
+//if car is parked decrease slot number by 1 to 1 else if unparked increase slot number by 1
+calculateSlotsinFloors(floor){	
+	for(each floor in floors) {
+		if(car.isunParked()){
+			floor = floorname;
+			numberOfSlots= numberOfSlots+1;
+		}
+		else {
+		if(slotAvailable) {
+		if(car.isParked()) {
+			floor = floorName;
+			numberOfSlots= numberOfSlots-1;
+			}
+		}
+	}
+	end for loop;
+return numberOfSlots,floor;
+}
+----------------------------------------------------------------------------------------------------------------	
+	class: CardDetails
+	State: name, cardNumber, cardType, expiryDate
+	cardType can be creditCard or debitCard
+	Behaviour:  	
+	isvalidCard(){
+		if(validCard)//only credit card or debit card must be used
+			return true;
+		else
+			return false;
+
+	verifyExpirydate() {
+	        if(expiryDateofCard < the current Date)
+	             return true;
+	else
+	        return false;
+	    }
+
+
+	}
+
+---------------------------------------------------------------------------------------------------
+	class:Payment
+	Behavior: payforParking(tokenId,parkInTime,parkoutTime,CardDetails.cardNumber){
+	    if(CardDetails.isvalidCard&&!CardDetails.verifyExpirydate()){
+	    	//parkingprice = $5 (per hour)
+	    	////calculate price on the basis of price of hour, number of hours parked
+	        float price = parkingPrice *(parkoutTime - parkInTime );
+	        PaymentService.makePayment(CardDetails.cardNumber, price );
+	        return receipt;
+	    }
+	    else
+	 //   raise an exception saying card is expired.
+	}
+	}
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+Design a vending Machine
+
+objects
+
+customer
+vendingMachine
+itemList
+-----------------------------------------------------------------
+class: customer 
+Data: customerName,customerAddress,coins
+Behavior:
+	
+insertcoins(coins,denominations){
+
+/*inserts number of coins*/
+
+}
+
+enterItemCode(itemCode){
+
+	/* enter the desired itemcode which is diaplyed in the vending Machine*/
+
+}
+
+getItemAndChange(){
+
+/*customer collects item and collects change if it is due*/
+
+}
+----------------------------------------------------------------------
+class:ItemList
+Data: itemName,itemCode,itemPrice
+Behavior:
+
+getItemPrice(itemCode){
+
+//return item price
+}
+
+-------------------------------------------------------------------------
+class: VendingMachine
+Data:itemCode,itemPrice
+Behavior: 
+
+Behavior: validateCoins(coinList){
+			for(i=0;i<coinList.size();coin++){ //loop for all coins
+					if(coin is penny||nickle||dime||quarter])
+						List<Coins> coins;
+						coins.add(coin) //keep adding the valid coins
+					else
+                                        //skip the coin and don't add to the list
+					 continue;
+				return coins;
+			}
+
+Behaviour: diposeItem(itemCode){
+
+/* drops selected item from the machine*/
+
+}
+
+Behaviour: reset(){
+
+/* return to original status of the machine */
+
+}
+
+Behaviour: refund(listOfCoins){
+/* return all the inserted coins to customer*/
+	return listOfCoins;
+}
+
+
+calculateAmountInserted(List<Coins>){
+
+	list<Coins> totalNumberOfCoins; 
+		for(each coin in listOfCoins) {
+   //calcualte denomination based on the coin type
+			if(coin is penny)
+				int pennyDenominatios=getDenomination(coin.penny);
+			if(coin is nickle)
+				int nickleDenominatios =  getDenomination(coin.nickle);
+			if(coin is quarter)
+				int quarterDenominatios = getDenomination(coin.quarter);
+			else
+				system.out.println(" invalid coin")
+				continue;
+		end for loop;
+        	//return total amount by adding the denominations of each coin
+       return(coin.penny *pennyDenominatios + coin.nickle * nickleDenominatios + coin.quarter *quarterDenominaions)
+}
+}
+
+issueBalance(calculatedamount,selectedItem_price){
+int balance = selectedItem_price - calculatedamount;
+return balance;
+
+}
+
+Behaviour : dropsItemAndRetrunChange(itemcode,coins){
+				listOfCoins = validateCoins(coins);
+				int calculatedamount=calculateAmountInserted(listOfCoins );
+				itemPrice = ItemList.getItemPrice(itemCode);
+				if(itemPrice == calculatedamount)
+					disposeItem(itemCode);
+					return item;
+					else if(itemPrice  < calculatedamount){
+						disposeItem(itemCode);
+						balance = issueBalance(calculatedamount,itemPrice);
+					return item,balance;
+					else if(itemPrice  > calculatedamount)
+						refund(coins);
+						displayMessage("insufficient amount");
+					return coins;
+					else      
+                  			 reset()
+
+				}
+
+}
+
+
+
+
+
+

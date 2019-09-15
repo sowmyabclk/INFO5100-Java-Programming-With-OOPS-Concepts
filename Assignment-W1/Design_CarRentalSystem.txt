@@ -1,0 +1,173 @@
+Design a Car Rental System
+
+Objects: Customer
+	 RentalService
+---------------------------------------------------------------------------------------------------------------------- 	 
+class:Customer
+State: customerCountry,customerName,CustomerAddress,CustomerPhoneNumber,customerCreditCardDetails
+Behaviour:searchForACar(),bookACar(),cancelACar(orderNumber)
+
+Custmer steps:
+
+Website.isValidLogin(username)
+    listOfCars=RentalService.searchforACar(pickupLocation,pickupDate,pickupTimings,dropDate,dropLocation,dropTimings) //get a list of Cars
+    ordeDetails=RentalService.bookACar(carId,paymentOptions,price) //book a car by selecting one in the list
+    RentalService.cancelACar(ordeDetails.orderNumber)
+Website.logout()
+
+-----------------------------------------------------------------------------------------------------------------------   
+Class: CardDetails
+State: name, cardNumber, cardType, expiryDate
+cardType can be creditCard or debitCard
+Behaviour:  
+     isValidCard(cardNumber){
+		if(CardDetails.cardType == creditCard||CardDetails.cardType == debitCard)
+			return true;
+		else 
+			return false;
+}
+
+Behavior: verifyExpirydate() {
+        if(expiryDateofCard is lesser than the current Date)
+             return true;
+else
+        return false;
+    }
+
+
+}
+--------------------------------------------------------------------------------------------------------------------
+
+RentalService
+
+Behavior:lisOfCarsAvailable(pickupLocation,pickupDate,pickupTimings,dropDate,dropLocation,dropTimings){
+
+List<String> carList = getListOfCars();
+List<String>availableCars;
+
+// check if search parameters holds good each car
+//if same add car to the availableCars list else dont add to the list but continue for next car
+
+for(i = 0; i < carList.size(); i++){ 
+if(carList.get(i).pickupLocation.equals(pickupLocation) && carList.get(i).pickupDate.equals(pickupDate)&& carList.get(i).pickupTimings.equals(pickupTimings)&&carList.get(i).dropDate.equals(dropDate) && carList.get(i).dropLocation.equals(dropLocation) && carList.get(i).dropTimings.equals(dropTimings) )
+{
+	availableCars.add(carList.get(i));//add each car to the list
+}
+else
+	;       //continue looping
+return availableCars;
+}
+
+
+Behavior:SearchForACar(String pickupLocation,String pickupDate,String pickupTimings,String dropDate,String dropLocation,String dropTimings)
+{
+
+try{
+   if(car.pickupDate < car.dropDate) //if car's pickup date is lesser compare to car's dropdate
+   {
+	   List<String> searchedListofCars=lisOfCarsAvailable(pickupLocation,pickupDate,pickupTimings,dropDate,dropLocation,dropTimings);
+	   	if(searchedListofCars.size().equals(0))
+	   		system.out.println("No cars available");
+	   	else
+	   		searchedListofCars;}
+
+catch(Exception e){
+system.out.println("pickup date is way ahead than the drop date")
+}
+searchedListofCars;
+}
+
+
+Behavior:bookACar(carId,paymentOptions,price){
+//based on the paymentoption do the behaviors/actions
+//if the payemntoption is debitCard, check expirydate of debitCard
+//if the payemntoption is creditCard, check expirydate of creditCard
+	
+
+switch(paymentOptions){
+
+case "debitCard":{
+
+boolean isExpired=CardCardDetails.verifyExpirydate();
+boolean isValid = CardDetails.isValidCard(cardNumber);
+if(!isValid && isExpired){
+
+raise an exception
+
+}
+else
+{
+ payment.paybill(cutomerId,debitCardNumber,price);
+  getReceipt();
+
+}
+
+case "creditCard":{
+
+boolean isExpired=CardDetails.verifyExpirydate();
+boolean isValid = CardDetails.isValidCard(cardNumber);
+if(!isValid || isExpired){
+
+raise an exception
+
+}
+else
+{
+  Payment.paybill(cutomerId,creditCardNumber,price);
+  getReceipt();
+
+}
+
+Behavior:cancelACar(orderNumber){
+//get Order details and cancel booking
+
+Payment.getRefund(orderNumber.orderamount);//refund will be credited to bank account
+
+}
+--------------------------------------------------------------------------------------------------------------------------
+
+class :Payment
+state: customerid,cardNumber,price
+Behavior : paybill(),getRefund()
+
+Behavior:paybill(cutomerId,creditCardNumber,price){
+
+// will redirect to payment page to pay the amount mentioned for the selected Car.
+}
+Behavior:getRefund(price){
+
+//will initiate refund and will be credited to the same card details which was mentioned during booking a car.
+
+
+}
+
+
+class:Website
+Data:username,password
+Behavior:
+	isValidLogin(username){
+	
+	if(userNameList.contains(username))
+		return true;
+	else
+		return false;
+}
+	
+
+
+Behavior:logout(){
+	//logout from the website
+	
+}
+}
+
+}
+
+
+
+
+
+
+
+
+
