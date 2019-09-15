@@ -4,6 +4,7 @@ Admin
 
 login
 search for the course
+add course
 remove the course
 logout
 	
