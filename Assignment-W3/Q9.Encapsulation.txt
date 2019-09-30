@@ -1,0 +1,64 @@
+Q9. Explain Encapsulation with an example. (Write at least 30-40 words).
+
+Encapsulation is a way of protecting the data from directly accessing and modifying it. Essentially this is known as data hiding. 
+This is a technique where in we will make all the data in a class as private and will define setters and getters for the data.getters are used to read the data and setters are used to modify the data.
+we can write validations in the setter so that if an object tries to change the data , it will be changed only if it meets those validations.
+
+
+package AED.Assignment3;
+
+public class encaps {
+	
+	private String studentName;
+    private int studentId;
+    private int studentAge;
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) throws Exception {
+		if(studentName.length() <=3)
+			throw new Exception("student name must be greater than 3");
+		this.studentName = studentName;
+	}
+	public int getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	public int getStudentAge() {
+		return studentAge;
+	}
+	public void setStudentAge(int studentAge) {
+		this.studentAge = studentAge;
+	}
+	
+	
+}
+
+main class-
+
+package AED.Assignment3;
+
+public class driverclass {
+	public static void main (String[] args) throws Exception  
+    { 
+		encaps e1 = new encaps(); 
+          
+	//	System.out.println("student name "+e1.studentName); //can not get the data since it is private
+        
+		e1.setStudentName("Sowmya"); 
+		e1.setStudentId(1); 
+		e1.setStudentAge(20); 
+		e1.setStudentName("abc"); //will get an error saying the student name must be greater than 3 since there is a validation in setter method
+          
+        
+        System.out.println("student name: " + e1.getStudentName()); 
+        System.out.println("student  age: " +e1.getStudentAge()); 
+        System.out.println("student roll number: " +e1.getStudentId()); 
+     //   e1.studentName = "sowmya"; // can not set the data as it is private
+          
+                
+    } 
+
+}

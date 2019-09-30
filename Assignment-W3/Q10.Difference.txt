@@ -1,0 +1,71 @@
+
+Q10. What is the difference between Encapsulation and Abstraction
+
+Abstraction
+
+1.it hides the unnecessary data by giving it to users.
+2.Abstraction really not focuses on the implementation of the function rather it focuses on what the function does.
+
+
+Example : Marker.
+
+void Marker(){
+fillInk();
+writeOnBoard();
+
+}
+
+We are not worried about how the implementation has been done on filling the ink andthe technique used to write on the board.
+
+
+Encapsulation:
+
+1.is a data-hiding technique or protecting the data from outside world. 
+2.to access the data we will use getters and setters so encapsulation cares about implementation.
+
+example
+
+
+package AED.Assignment3;
+
+public class encaps {
+	
+	private String studentName;
+    
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) throws Exception {
+		if(studentName.length() <=3)
+			throw new Exception("student name must be greater than 3");
+		this.studentName = studentName;
+	}
+	
+	
+	
+	
+}
+
+main class-
+
+package AED.Assignment3;
+
+public class driverclass {
+	public static void main (String[] args) throws Exception  
+    { 
+		encaps e1 = new encaps(); 
+          
+	//	System.out.println("student name "+e1.studentName); //can not get the data since it is private
+        
+		
+          
+                
+    } 
+
+}
+
+
+
+
+
+
