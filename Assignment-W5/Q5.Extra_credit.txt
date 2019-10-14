@@ -50,7 +50,7 @@ public class Test {
 
 Answer is 
 
-60
+6
 
 
 operations:
@@ -62,7 +62,7 @@ since addAll method in parent class has this.add(this will be still be referring
 loop for number of elements in list in addAll method(parent class)
 	At class B addCount value will be increased by 1 and super.add(e) -->the add method in the parent class will be called where in elements get added to the list )
 end loop
-b.getAddCount() will return addCount value that is 6 and b.getI() will return 0 as the I value in parent Class A is 0
+b.getAddCount() will return addCount value that is 6 and b.getI() will return 0 as the I value in parent Class A is 0 so 6+0 =6
 
 
 
