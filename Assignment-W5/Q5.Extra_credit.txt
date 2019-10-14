@@ -1,0 +1,72 @@
+class A {
+	List<Object> list = new LinkedList<>();
+	public boolean addAll(Collection<Object> c) {
+		Iterator<Object> it = c.iterator();
+		while(it.hasNext())
+			this.add(it.next());
+		return true;
+	}
+	public boolean add(Object e) {
+		list.add(e);
+		return true;
+	}
+
+	private int i = 0;
+	public int getI(){
+		return i;
+	}
+}
+
+class B extends A {
+	private int addCount = 0;
+	public int getAddCount() {
+		return addCount;
+	}
+
+	@Override
+	public boolean addAll(Collection<Object> c) {
+		addCount += c.size();
+		return super.addAll(c);
+	}
+	
+	@Override
+	public boolean add(Object e) {
+		addCount++;
+		return super.add(e);
+	}
+    
+	public int i = 3;
+}
+
+public class Test {
+	public static void main(String[] args) {
+		B b = new B();
+		List<Object> list = Arrays.asList(1,2,3);
+		b.addAll(list);
+		System.out.println(b.getAddCount()+b.getI());
+	}
+}
+
+
+Answer is 
+
+60
+
+
+operations:
+
+we have created an object of B and a list consists of 3 elements. 
+when we invoke addAll method through B 
+addCount ---> 0+ 3(size of the list) and super.addAll(c) ---> addAll method in parent class will be called). 
+since addAll method in parent class has this.add(this will be still be referring to b object) so add method in B will be called every time when adding the elements 
+loop for number of elements in list in addAll method(parent class)
+	At class B addCount value will be increased by 1 and super.add(e) -->the add method in the parent class will be called where in elements get added to the list )
+end loop
+b.getAddCount() will return addCount value that is 6 and b.getI() will return 0 as the I value in parent Class A is 0
+
+
+
+
+
+
+

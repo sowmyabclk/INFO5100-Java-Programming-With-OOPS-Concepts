@@ -1,0 +1,70 @@
+Final:
+
+final is a keyword. we can use it for varible, methods and classes.
+
+The values of variables which are declared with final scope can not be changed after they are initailized.
+if the method is declared with final, it can not be overrideen in the child classes.
+the classes with final keyword can not be inherited by other classes.
+
+Example:
+
+1)	public static void main(String[] args){
+
+	final int value = 100;
+	value = 20; // compile time error
+
+	}
+
+2)	public class Child extends Parent {
+ 
+   	 @Override
+    	void calc(int a, int b) {
+        
+    	}
+     
+    	@Override
+    	final void totalCost() {
+        // Compilation error
+   	 }
+ 
+	}
+
+3)	public final class parent{
+
+	}
+
+	public class child extends parent{
+
+	//compilation error
+	}
+
+
+finally:
+
+finally is a block used in exception handling. This will be executed always whether there is an exception or not.
+
+package Assignment5;
+
+public class Division {
+	
+	public static int divide(int a ,int b) {
+		int value = 0;
+		try {
+		 value = a/b;
+		}
+		catch(ArithmeticException e) {
+			System.out.println("can not be divided by zero");
+		}
+		
+		
+		finally {
+			Runtime.getRuntime().gc();   // used to free the memory evnen though the prgram halts due to an exception
+			System.out.println("finally");
+		
+			
+		}
+		
+		return value;
+
+	}
+
