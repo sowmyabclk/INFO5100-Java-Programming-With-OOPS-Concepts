@@ -1,11 +1,9 @@
 package AED.Assignment6.ATMQuestion;
 
-
-
 class User  {
   
   private String name, address, phoneNumber, bankAccountNumber;
- private int birthYear;
+ private int age;
   
   
   String getName() {
@@ -33,8 +31,11 @@ class User  {
     this.phoneNumber = phoneNumber;
   }
 	
-	 int getBirthYear() { return birthYear; } void setBirthYear(int year) {
-	this.birthYear = year; }
+	 int getAge() {
+		 return age; 
+		 } 
+	 void setAge(int year) {
+	this.age = year; }
 	 
   
   protected User(){};
@@ -44,7 +45,7 @@ class User  {
   }
   
   public String toString(){
-    return name+", "+birthYear+", "+phoneNumber+", "+bankAccountNumber+", "+address;
+    return name+", "+age+", "+phoneNumber+", "+bankAccountNumber+", "+address;
   //  return name+", "+phoneNumber+", "+bankAccountNumber+", "+address;
 
   }
