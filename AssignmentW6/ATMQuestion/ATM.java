@@ -170,7 +170,7 @@ class ATM {
       user.setName(scanner.nextLine().trim());
 
       System.out.print("\n Enter your age");
-     user.setBirthYear(Integer.valueOf(scanner.nextLine()));
+     user.setAge(Integer.valueOf(scanner.nextLine()));
 
       System.out.println("\n Enter the address");
       String address = scanner.nextLine();
@@ -255,11 +255,11 @@ class ATM {
         if (item.equals("1"))
           this.getBalance(user);
         else if (item.equals("2")) {
-          System.out.println("\nHow much would you like to withdrawal?");
+          System.out.println("enter withdraw amount");
           double withdrawal=Double.valueOf(scanner.nextLine());
           this.withDrawal(user, withdrawal);
         } else if (item.equals("3")) {
-          System.out.println("\nHow much would you like to deposit?");
+          System.out.println("enter deposit amount");
           double deposit=Double.valueOf(scanner.nextLine());
           this.deposit(user, deposit);
         } else if (item.equals("4"))
@@ -334,7 +334,7 @@ class ATM {
 
   private boolean validate(String name, int age, String phone) {
     UserData user = customers.get(accNumberToAccount.get(phone));
-   if (user != null && user.getName().equals(name) && user.getBirthYear() == age
+   if (user != null && user.getName().equals(name) && user.getAge() == age
  //   if (user != null && user.getName().equals(name) 
         && user.getPhoneNumber().equals(phone))
       return true;
