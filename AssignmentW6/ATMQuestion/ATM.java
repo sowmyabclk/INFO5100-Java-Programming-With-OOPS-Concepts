@@ -184,11 +184,8 @@ class ATM {
     return user;
   }
   
-  /**
-   * Register this user as an legal ATM user.
-   * @param user: A potential customer.
-   */
-  void register(UserData user) {
+
+  public void register(UserData user) {
     if (customers.containsKey(user.getBankAccountNumber())){
     //    || accNumberToAccount.containsKey(user.getPhoneNumber())) {
       System.out.println("\nFailed. This bank account or phone number has been used. Please verify and try again!");
