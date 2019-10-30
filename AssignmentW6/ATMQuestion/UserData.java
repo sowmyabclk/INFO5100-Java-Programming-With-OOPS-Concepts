@@ -1,9 +1,8 @@
 package AED.Assignment6.ATMQuestion;
 
-import java.io.Serializable;
 
 
-class UserData extends User implements Serializable {
+class UserData extends User {
 
 
   private double availableBalance;
@@ -22,22 +21,19 @@ class UserData extends User implements Serializable {
     this.password = password;
   }
   
-  protected UserData(){}
+  public UserData(){}
   
   UserData(String name, String phone){
     super(name,phone);
   }
   
- // UserData(String name, int birthYear, String phone, String card){
 	  UserData(String name, String phone, String card){
     super(name, phone);
-//    super.setBirthYear(birthYear);
     super.setBankAccountNumber(card);
     this.availableBalance=0.0;
   }
   
-  UserData(String name, int birthYear, String phone, String card, String password){
-	//  UserData(String name, String phone, String card, String password){
+  UserData(String name, int age, String phone, String card, String password){
 
     this(name, phone, card);
     this.password=password;
