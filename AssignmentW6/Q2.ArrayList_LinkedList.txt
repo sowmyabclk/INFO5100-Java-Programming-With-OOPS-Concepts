@@ -1,0 +1,6 @@
+II. Write two differences between ArrayList and LinkedList. (Score 1)
+
+1)LinkedList  works on the concept of having reference of previous and next nodes.Hence it is faster when we are adding new element and deleting an element from the list so the time complexity is O(1) whereas in ArrayList we should resize an array whenever we add an element and remove an element from list which leads to O(n) operation.
+
+
+2) LinkedList is slower when we are searching for an element because it is not index based and we need to iterate over all the elements to get the specific element which is O(n) operation whereas Array list is faster because it is index based and we will just use get(index) so the time complexity would be O(1).
